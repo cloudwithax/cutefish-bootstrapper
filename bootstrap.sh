@@ -37,7 +37,7 @@ echo "Alright, lets start with some prequisite checks first..."
 sleep 1
 
 # Let's check if the system they're even using runs Arch
-arch_check=$(grep "Arch" /etc/os-release)
+arch_check=$(grep "ID=arch" /etc/os-release)
 
 if [ -z $arch_check ]; then
 	echo -e "${XMARK} Arch not detected, now exiting..."
@@ -71,7 +71,7 @@ echo "The desktop environment will now be installed."
 sleep 2
 
 # Arch coming in clutch with the cutefish meta package in the main repos
-pacman -Syu --noconfirm cutefish
+sudo pacman -Syu --noconfirm cutefish
 	
 echo -e "${CHECKMARK} Cutefish is now installed."
 sleep 2
