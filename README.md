@@ -14,7 +14,7 @@ You must have a barebones Arch install to run this script. This means that you h
 The easiest way to run this script is by typing in the following command in the terminal.
 
 ```
-curl -sSL https://t.ly/cutefish | bash
+curl -sLO https://t.ly/cutefish | sh cutefish
 ```
 
 Otherwise, clone the git repo and run the script from the newly created folder.

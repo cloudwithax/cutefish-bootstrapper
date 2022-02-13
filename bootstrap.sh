@@ -37,7 +37,7 @@ echo "Alright, lets start with some prequisite checks first..."
 sleep 1
 
 # Let's check if the system they're even using runs Arch
-arch_check=$(grep "Arch" /etc/lsb-release)
+arch_check=$(grep "Arch" /etc/os-release)
 
 if [ -z $arch_check ]; then
 	echo -e "${XMARK} Arch not detected, now exiting..."
