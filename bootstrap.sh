@@ -63,7 +63,17 @@ if [ -z $git_check ]; then
 	sleep 1
 	sudo pacman -Syu --noconfirm git
 fi
-echo -e "${CHECKMARK} Git package is installed"
+# Now lets check if cmake is installed
+git_check=$(pacman -Qq | grep "^cmake")
+if [ -z $git_check ]; then
+	echo -e "${XMARK} Cmake is not installed"
+	echo ''
+	sleep 1
+	echo "Now installing Cmake package. Please provide your password if asked."
+	sleep 1
+	sudo pacman -Syu --noconfirm cmake
+fi
+echo -e "${CHECKMARK} Cmake package is installed"
 sleep 1
 echo "All prerequisites have been fulfilled. Now let's get started.."
 echo ''
