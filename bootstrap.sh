@@ -108,8 +108,8 @@ sleep 1
 echo -e "${CHECKMARK} Cutefish desktop install is now complete!"
 sleep 1
 cd $HOME
-rm sddm-theme
-mkdir Desktop Documents Pictures Videos Music Videos
+rm -rf sddm-theme
+mkdir Desktop Documents Downloads Pictures Videos Music 
 reboot_confirm=""
 
 while [ -n $reboot_confirm ]; 
