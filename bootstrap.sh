@@ -53,48 +53,29 @@ fi
 
 # Now lets check to see if yay is installed
 sleep 1
-yay_check=$(pacman -Qq | grep "yay")
-if [ -z $yay_check ]; then
-	echo -e "${XMARK} Yay is not installed"
+# Lets check if git is installed
+git_check=$(pacman -Qq | grep "^git")
+if [ -z $git_check ]; then
+	echo -e "${XMARK} Git is not installed"
 	echo ''
-	echo "Yay will now be installed to help assist in installing Cutefish"
-	echo ''
 	sleep 1
-	
-	# Lets check if git is installed
-	git_check=$(pacman -Qq | grep "^git")
-	if [ -z $git_check ]; then
-		echo -e "${XMARK} Git is not installed"
-		echo ''
-		sleep 1
-		echo "Now installing git package. Please provide your password if asked."
-		sleep 1
-		sudo pacman -Syu --noconfirm git
-	fi
-	echo -e "${CHECKMARK} Git package is installed"
+	echo "Now installing git package. Please provide your password if asked."
 	sleep 1
-	echo "Now installing yay package..."
-	sleep 1
-	git clone https://aur.archlinux.org/yay.git
-	cd yay 
-	makepkg -si --noconfirm
-	cd ..
-else
-	echo -e "${CHECKMARK} Yay is installed"
-	sleep 1
+	sudo pacman -Syu --noconfirm git
 fi
+echo -e "${CHECKMARK} Git package is installed"
+sleep 1
 echo "All prerequisites have been fulfilled. Now let's get started.."
 echo ''
 echo "The desktop environment will now be installed."
-echo "This process may take some time due to everything being built from source"
 sleep 2
 
-# To make this process easier, the AUR has a cutefish-git metapackage
-yay -S --noconfirm cutefish-git
+# Arch coming in clutch with the cutefish meta package in the main repos
+pacman -Syu --noconfirm cutefish
 	
 echo -e "${CHECKMARK} Cutefish is now installed."
 sleep 2
-echo "Now let's get the display manager configured"
+echo "Now let's get the display manager configured..."
 sleep 1
 sudo pacman -Syu --noconfirm sddm
 echo -e "${CHECKMARK} SDDM is now installed."
