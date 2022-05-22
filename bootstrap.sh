@@ -1,4 +1,8 @@
 #!/bin/sh
+if [ "$EUID" -e 0 ]
+  then echo "Please run this script as a regular user."
+  exit
+fi
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -11,9 +15,10 @@ echo ""
 echo "Do be advised that you need to have a blank Arch install for this to work"
 echo "(a.k.a: You have no desktop environment and are just at a terminal)"
 echo ""
-echo "This process may take a few minutes to complete since everything will be compiled from scratch."
+echo "This process may take a few minutes. Please make sure you have a sufficient internet connection."
 echo ""
 confirm=""
+
 
 while [ -n $confirm ]; 
 do
@@ -33,7 +38,7 @@ do
 done
 
 echo ''
-echo "Alright, lets start with some prequisite checks first..."
+echo "Alright, lets start with some prerequisite checks first..."
 sleep 1
 
 # Let's check if the system they're even using runs Arch
